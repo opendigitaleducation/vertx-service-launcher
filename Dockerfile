@@ -12,5 +12,4 @@ WORKDIR /srv/springboard
 EXPOSE 8090
 VOLUME ["/srv/springboard/mods", "/srv/springboard/assets", "/srv/springboard/conf", "/home/vertx/.m2"]
 
-CMD java -agentlib:jdwp=transport=dt_socket,address=5000,server=y,suspend=n -jar /opt/vertx-service-launcher.jar -Dvertx.services.path=/srv/springboard/mods -Dvertx.disableFileCaching=true -conf /srv/springboard/conf/vertx.conf
-
+CMD java -agentlib:jdwp=transport=dt_socket,address=5000,server=y,suspend=${DEBUG_SUSPEND:-n} -jar /opt/vertx-service-launcher.jar -Dvertx.services.path=/srv/springboard/mods -Dvertx.disableFileCaching=true -conf /srv/springboard/conf/vertx.conf
